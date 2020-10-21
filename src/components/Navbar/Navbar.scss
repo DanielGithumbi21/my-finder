@@ -1,0 +1,15 @@
+.container-fluid {
+  padding-left: 20px;
+  margin-top: 2%;
+  width: 90%;
+
+  .navbar-brand {
+    font-weight: 500;
+    color: blue;
+  }
+  .nav-link {
+    margin-left: 50px !important;
+    color: cadetblue !important;
+    padding-left: 20px !important;
+  }
+}
