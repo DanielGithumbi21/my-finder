@@ -12,12 +12,12 @@ router.route("/add").post((req, res) => {
   const Name = req.body.Name;
   const documentName = req.body.documentName;
   const documentType = req.body.documentType;
-  const documentNumber = req.body.documentNumber;
+  const location = req.body.location;
   const newPost = new post({
     Name,
     documentName,
     documentType,
-    documentNumber,
+    location,
   });
   newPost
     .save()

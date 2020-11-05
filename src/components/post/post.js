@@ -7,13 +7,13 @@ class Post extends Component {
     super(props);
     this.onChangeDocumentName = this.onChangeDocumentName.bind(this);
     this.onChangeName = this.onChangeName.bind(this);
-    this.onChangeDocumentNumber = this.onChangeDocumentNumber.bind(this);
     this.onChangeDocumentType = this.onChangeDocumentType.bind(this);
+    this.onChangeLocation = this.onChangeLocation.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.state = {
       Name: "",
       documentName: "",
-      documentNumber: 0,
+      location: "",
       documentType: "",
     };
   }
@@ -26,25 +26,26 @@ class Post extends Component {
       documentName: e.target.value,
     });
   }
-  onChangeDocumentNumber(e) {
-    this.setState({ documentNumber: e.target.value });
-  }
   onChangeDocumentType(e) {
     this.setState({ documentType: e.target.value });
   }
-
+  onChangeLocation(e) {
+    this.setState({ location: e.target.value });
+  }
+  
   onSubmit(e) {
     e.preventDefault();
     const post = {
       Name: this.state.Name,
       documentName: this.state.documentName,
-      documentNumber: this.state.documentNumber,
       documentType: this.state.documentType,
+      location:this.state.location,
     };
     console.log(post);
     axios
       .post("http://localhost:8080/post/add", post)
       .then((res) => console.log(res.data));
+    window.location = "/";
   }
   render() {
     return (
@@ -63,6 +64,16 @@ class Post extends Component {
               className="form-control"
               onChange={this.onChangeName}
               value={this.state.Name}
+            />
+          </div>
+          <div className="form-group">
+            <label>Enter the place where you found the document:</label>
+            <input
+              placeholder="e.g Likana bus -> KBS 203A"
+              type="text"
+              className="form-control"
+              onChange={this.onChangeLocation}
+              value={this.state.location}
             />
           </div>
 
@@ -84,15 +95,6 @@ class Post extends Component {
               className="form-control"
               onChange={this.onChangeDocumentName}
               value={this.state.documentName}
-            />
-          </div>
-          <div className="form-group">
-            <label>Enter the number on the document:</label>
-            <input
-              type="number"
-              className="form-control"
-              onChange={this.onChangeDocumentNumber}
-              value={this.state.documentNumber}
             />
           </div>
           <div className="form-group">

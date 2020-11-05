@@ -9,14 +9,16 @@ const postSchema = new Schema({
     type: String,
     required: true,
   },
+
+  location:{
+    type:String,
+    required:true
+  },
   documentType: {
     type: String,
     required: true,
   },
-  documentNumber: {
-    type: Number,
-    required: true,
-  },
+  
 });
 
 const post = mongoose.model("posts", postSchema);

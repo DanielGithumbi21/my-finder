@@ -6,7 +6,7 @@ const Post = (props) => (
   <tr>
     <td>{props.post.documentType}</td>
     <td>{props.post.documentName}</td>
-    <td>{props.post.documentNumber}</td>
+    <td>{props.post.location}</td>
     <td>{props.post.Name}</td>
   </tr>
 );
@@ -16,10 +16,13 @@ class Find extends Component {
     super(props);
     this.postList = this.postList.bind(this);
     this.getData = this.getData.bind(this);
+
     this.state = {
       posts: [],
     };
   }
+  
+
   componentDidMount() {
     this.getData();
   }
@@ -32,6 +35,7 @@ class Find extends Component {
         this.setState({
           posts: data,
         });
+       
 
         console.log("Data has been received");
       })
@@ -55,13 +59,13 @@ class Find extends Component {
             <tr>
               <th>The type of the document.</th>
               <th>Name of the document.</th>
-              <th>Number on the document</th>
+              <th>Location.</th>
               <th>Name of the document founder.</th>
             </tr>
           </thead>
           <tbody>{this.postList()}</tbody>
         </table>
-        <div className="blog">{this.displayGetData}</div>
+        
       </div>
     );
   }
